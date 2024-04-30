@@ -86,9 +86,9 @@ def download_file(url: str, output_path: str, token: str):
 
         response = urllib.request.urlopen(redirect_url)
     elif response.status == 404:
-        raise Exception('File not found')
+        raise Exception('ファイルが見つかりませんでした。')
     else:
-        raise Exception('No redirect found, something went wrong')
+        raise Exception('リダイレクトが見つかりませんでした。')
 
     total_size = response.getheader('Content-Length')
 
@@ -118,7 +118,7 @@ def download_file(url: str, output_path: str, token: str):
 
             if total_size is not None:
                 progress = downloaded / total_size
-                sys.stdout.write(f'\rDownloading: {filename} [{progress*100:.2f}%] - {speed:.2f} MB/s')
+                sys.stdout.write(f'\rダウンロード中: {filename} [{progress*100:.2f}%] - {speed:.2f} MB/秒')
                 sys.stdout.flush()
 
     end_time = time.time()
@@ -127,15 +127,14 @@ def download_file(url: str, output_path: str, token: str):
     minutes, seconds = divmod(remainder, 60)
 
     if hours > 0:
-        time_str = f'{int(hours)}h {int(minutes)}m {int(seconds)}s'
+        time_str = f'{int(hours)}時間 {int(minutes)}分 {int(seconds)}秒'
     elif minutes > 0:
-        time_str = f'{int(minutes)}m {int(seconds)}s'
+        time_str = f'{int(minutes)}分 {int(seconds)}秒'
     else:
-        time_str = f'{int(seconds)}s'
+        time_str = f'{int(seconds)}秒'
 
     sys.stdout.write('\n')
-    print(f'Download completed. File saved as: {filename}')
-    print(f'Downloaded in {time_str}')
+    print(f'ダウンロード完了: {filename}  経過時間 : {time_str}')
 
 
 def main():
