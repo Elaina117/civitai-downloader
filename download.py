@@ -9,7 +9,7 @@ from urllib.parse import urlparse, parse_qs, unquote
 
 
 CHUNK_SIZE = 1638400
-TOKEN_FILE = Path.home() / '.civitai' / 'config'
+TOKEN_FILE = Path.home() / '.civitai' / 'apikey'
 USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
 
 
@@ -50,7 +50,7 @@ def store_token(token: str):
 
 
 def prompt_for_civitai_token():
-    token = input('Please enter your CivitAI API token: ')
+    token = input('CivitAIのAPIキーを入力してください→ ')
     store_token(token)
     return token
 
