@@ -134,7 +134,7 @@ def download_file(url: str, output_path: str, token: str):
         time_str = f'{int(seconds)}秒'
 
     sys.stdout.write('\n')
-    print(f'ダウンロード完了: {filename}  経過時間 : {time_str}')
+    print(f'ダウンロード完了。 経過時間 : {time_str}')
 
 
 def main():
